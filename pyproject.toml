@@ -1,0 +1,35 @@
+[build-system]
+requires = ["setuptools>=77", "wheel"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "my-analyzer"
+version = "0.1.0"
+description = "A datatrawl analyzer, started from the WVURAIL analyzer template."
+readme = "README.md"
+requires-python = ">=3.9"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [
+    { name = "Your Name" },
+]
+
+# datatrawl is not on PyPI; depend on the pinned release tag directly.
+# numpy / h5py / pyyaml arrive as datatrawl's own core dependencies.
+dependencies = [
+    "datatrawl @ git+https://github.com/WVURAIL/datatrawl.git@v0.2.0",
+]
+
+[project.optional-dependencies]
+dev = [
+    "pytest>=7",
+]
+
+# This is the line that makes the analyzer discoverable without --plugin:
+# after `pip install -e .`, datatrawl imports this module at startup and the
+# @analyzer decorator registers it.
+[project.entry-points."datatrawl.plugins"]
+freq_id-peak = "my_analyzer.analyzer"
+
+[tool.setuptools.packages.find]
+where = ["src"]
