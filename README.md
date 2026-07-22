@@ -5,6 +5,11 @@ A working starting point for a [datatrawl](https://github.com/WVURAIL/datatrawl)
 analyzer that lives in **your own repository**. Click **Use this template**,
 rename a few things, and your science plugin is installable, discoverable, and
 tested -- while datatrawl itself stays untouched.
+ 
+That split is deliberate: instrument, source, and reader changes go to
+[datatrawl](https://github.com/WVURAIL/datatrawl) as pull requests, while
+analyzers are never merged there -- an analyzer lives here, in the repository
+that owns the science.
 
 The template ships one complete analyzer, `freq_id-peak` (averaged power
 spectrum + peak bin, one product per freq_id). It is small enough to read in one
